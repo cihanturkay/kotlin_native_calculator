@@ -16,19 +16,10 @@ class Calculator : ExpressionComposer<Double> {
     override fun div(left: Double, right: Double) = left / right
 
     override fun fib(value: Double): Double {
-        //TODO  could be better than this complexity O(n).
-        var i = 1
-        var t1 = 0.0
-        var t2 = 1.0
-        while (i <= value) {
-            val sum = t1 + t2
-            t1 = t2
-            t2 = sum
-            i++
-        }
-        return t2
+        return fibonacci(value.toInt(), 1.0, 0.0)
     }
 }
+
 
 class PartialRenderer : PartialExpressionComposer<Double, String> {
     override fun missing() = "..."
@@ -355,5 +346,12 @@ internal class Tokenizer(private val expression: String) {
         while (expression.getOrNull(index)?.isWhitespace() == true) {
             ++index
         }
+    }
+}
+
+tailrec fun fibonacci(nValue: Int, a: Double, b: Double): Double {
+    return when (nValue == 0) {
+        true -> b
+        false -> fibonacci(nValue - 1, a + b, a)
     }
 }
