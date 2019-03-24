@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/display_function"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:text="123213"
+            android:gravity="end"
+            app:autoSizeMaxTextSize="90sp"
+            android:padding="12dp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeStepGranularity="2sp"
+            android:elevation="4dp"
+            android:ellipsize="end"
+            android:background="@android:color/white"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/display_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/display_result"
+            android:layout_width="0dp"
+            android:elevation="4dp"
+            android:background="@android:color/white"
+            android:layout_height="wrap_content"
+            tools:text="123213"
+            android:gravity="end"
+            app:autoSizeMaxTextSize="100sp"
+            app:autoSizeMinTextSize="30sp"
+            android:textSize="30sp"
+            android:padding="12dp"
+            app:autoSizeStepGranularity="2sp"
+            android:ellipsize="end"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/pad_num"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <include
+            android:id="@+id/pad_num"
+            layout="@layout/pad_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

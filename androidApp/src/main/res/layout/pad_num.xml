@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4">
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/op_fib"/>
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/lparen"/>
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/rparen"/>
+
+    <ImageView
+            style="@style/Calculator_Button"
+            android:padding="22dp"
+            android:onClick="onBackSpace"
+            android:src="@drawable/ic_backspace"
+            android:tint="@color/colorPrimary"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="7"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="8"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="9"/>
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/op_div"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="4"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="5"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="6"/>
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/op_mul"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="1"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="2"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="3"/>
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/op_sub"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="0"/>
+
+    <TextView
+            style="@style/Calculator_Button"
+            android:text="."/>
+
+    <TextView
+            android:onClick="onEqualsClicked"
+            style="@style/Calculator_Button_Op"
+            android:text="@string/eq"
+            android:textSize="30sp"/>
+
+    <TextView
+            style="@style/Calculator_Button_Op"
+            android:text="@string/op_add"/>
+
+
+</GridLayout>

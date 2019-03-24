@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Konan Calculator</string>
+    <string name="enter_mathematical_expression">Enter mathematical expression:</string>
+
+    <string name="lparen">(</string>
+    <string name="rparen">)</string>
+    <string name="op_add">+</string>
+    <string name="op_div">÷</string>
+    <string name="op_fact">!</string>
+    <string name="op_mul">×</string>
+    <string name="op_pow">^</string>
+    <string name="op_sqrt">√</string>
+    <string name="op_sub">−</string>
+    <string name="eq">=</string>
+    <string name="op_fib">fib</string>
+
+</resources>
