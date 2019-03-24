@@ -14,7 +14,20 @@ class Calculator : ExpressionComposer<Double> {
     override fun minus(left: Double, right: Double) = left - right
     override fun mult(left: Double, right: Double) = left * right
     override fun div(left: Double, right: Double) = left / right
-    override fun fib(value: Double) = value * 2
+
+    override fun fib(value: Double): Double {
+        //TODO  could be better than this complexity O(n).
+        var i = 1
+        var t1 = 0.0
+        var t2 = 1.0
+        while (i <= value) {
+            val sum = t1 + t2
+            t1 = t2
+            t2 = sum
+            i++
+        }
+        return t2
+    }
 }
 
 class PartialRenderer : PartialExpressionComposer<Double, String> {
