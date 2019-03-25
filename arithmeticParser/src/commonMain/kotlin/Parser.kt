@@ -16,7 +16,7 @@ class Calculator : ExpressionComposer<Double> {
     override fun div(left: Double, right: Double) = left / right
 
     override fun fib(value: Double): Double {
-        return fibonacci(value.toInt(), 1.0, 0.0)
+        return fibonacci(value, 1.0, 0.0)
     }
 }
 
@@ -349,9 +349,9 @@ internal class Tokenizer(private val expression: String) {
     }
 }
 
-tailrec fun fibonacci(nValue: Int, a: Double, b: Double): Double {
-    return when (nValue == 0) {
+tailrec fun fibonacci(nValue: Double, a: Double, b: Double): Double {
+    return when (nValue == 0.0) {
         true -> b
-        false -> fibonacci(nValue - 1, a + b, a)
+        false -> fibonacci(nValue - 1.0, a + b, a)
     }
 }

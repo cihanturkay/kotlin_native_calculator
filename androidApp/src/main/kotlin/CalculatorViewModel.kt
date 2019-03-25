@@ -4,17 +4,37 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
-import android.util.Log
-import sample.calculator.arithmeticparser.PartialParser
 import sample.calculator.arithmeticparser.parseAndCompute
+import java.text.DecimalFormat
+import java.util.concurrent.Executors
 
 class CalculatorViewModel : ViewModel() {
 
-    private val expression = MutableLiveData<StringBuilder>()
-    val result: LiveData<PartialParser.Result<Double, String>> = Transformations.map(expression) { value ->
-        parseAndCompute(value.toString())
+    //TODO Create executors in a dagger module to use it them globally in the app
+    private val calculatorExecutor = Executors.newSingleThreadExecutor()
+    private val decimalFormatter = DecimalFormat.getNumberInstance()
+
+    val expression = MutableLiveData<StringBuilder>()
+    val result: LiveData<String> = Transformations.switchMap(expression) { value ->
+        calculate(value.toString())
     }
 
+    private fun calculate(expression: String): LiveData<String> {
+        val result = MutableLiveData<String>()
+        calculatorExecutor.execute {
+            Runnable {
+                if (expression.isBlank()) {
+                    result.postValue("")
+                } else {
+                    val partialResult = parseAndCompute(expression)
+                    partialResult.expression?.let {
+                        result.postValue(decimalFormatter.format(it))
+                    }
+                }
+            }.run()
+        }
+        return result
+    }
 
     fun appendExpression(value: String) {
         expression.value?.let { currentBuilder ->
@@ -34,12 +54,8 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
-    fun getExpression(): String {
-        return expression.value.toString()
-    }
-
     fun subTotal() {
-        val result :Double? = parseAndCompute(expression.value.toString()).expression
+        val result: Double? = parseAndCompute(expression.value.toString()).expression
         result?.let {
             expression.postValue(StringBuilder(result.toString()))
         }

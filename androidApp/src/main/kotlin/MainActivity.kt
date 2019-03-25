@@ -10,16 +10,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import sample.calculator.android.databinding.ActivityMainBinding
-import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var calculatorViewModel: CalculatorViewModel
-    private val decimalFormatter = DecimalFormat.getNumberInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,22 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
 
-        calculatorViewModel.result.observe(this, Observer { newResult ->
-            val expression = calculatorViewModel.getExpression()
-            binding.displayFunction.text = expression
-            if (expression.isBlank()) {
-                binding.displayResult.text = ""
-            } else {
-                newResult?.expression?.let {
-                    binding.displayResult.text = decimalFormatter.format(it)
-                } ?: run {
-                    //TODO what to show if the expression is not finalised
-                    //binding.displayResult.text = "..."
-                }
-            }
+        calculatorViewModel.expression.observe(this, Observer { binding.displayFunction.text = it.toString() })
+        calculatorViewModel.result.observe(this, Observer { binding.displayResult.text = it })
 
-            Log.d("MainActivity", " result $newResult")
-        })
     }
 
     fun onButtonClick(view: View) {
