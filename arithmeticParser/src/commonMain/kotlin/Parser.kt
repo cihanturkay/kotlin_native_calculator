@@ -18,6 +18,14 @@ class Calculator : ExpressionComposer<Double> {
     override fun fib(value: Double): Double {
         return fibonacci(value, 1.0, 0.0)
     }
+
+    private tailrec fun fibonacci(nValue: Double, a: Double, b: Double): Double {
+        if (nValue > 9999) return Double.POSITIVE_INFINITY
+        return when (nValue == 0.0) {
+            true -> b
+            false -> fibonacci(nValue - 1.0, a + b, a)
+        }
+    }
 }
 
 
@@ -346,12 +354,5 @@ internal class Tokenizer(private val expression: String) {
         while (expression.getOrNull(index)?.isWhitespace() == true) {
             ++index
         }
-    }
-}
-
-tailrec fun fibonacci(nValue: Double, a: Double, b: Double): Double {
-    return when (nValue == 0.0) {
-        true -> b
-        false -> fibonacci(nValue - 1.0, a + b, a)
     }
 }
