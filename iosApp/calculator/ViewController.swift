@@ -46,6 +46,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         let parsed = parser.parseWithPartial(expression: input.text)
         if let resultValue = parsed.expression {
             result.text = "\(resultValue)"
+        } else {
+            result.text = ""
         }
     }
 }
