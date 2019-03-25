@@ -1,3 +1,11 @@
+# Result
+
+Extended version of the calculator sample in kotlin native repo.
+In this example, fibonacci function has been added and ui has been updated to make it more usable.
+
+<img align="left" width="260" src="images/android.jpg">
+<img width="260" src="images/ios.png">
+
 # Calculator sample
 
 This example shows how to use Kotlin common module (located in [arithmeticParser](arithmeticParser/)) in different environments.
